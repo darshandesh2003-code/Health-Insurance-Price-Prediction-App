@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 import pickle
 #load the model
 model= pickle.load(open('gb_model.pkl','rb'))
@@ -36,7 +36,7 @@ input_data=pd.DataFrame({
     'Region':[Region]
 })
 
-scaler=StandardScaler()
+scaler=MinMaxScaler()
 input_data[['age','bmi']]=scaler.fit_transform(input_data[['age','bmi']])
 
 if st.button('Predict'):
